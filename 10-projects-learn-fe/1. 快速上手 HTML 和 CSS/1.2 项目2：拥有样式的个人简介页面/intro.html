@@ -1,0 +1,61 @@
+<!-- 项目1：个人简介页面
+目标：制作一个简单的个人简介页面
+内容：
+使用HTML创建页面结构：
+标题：使用<h1>标签创建页面标题。
+段落：使用<p>标签添加个人简介内容。
+图片：使用<img>标签插入个人照片或相关图片。
+链接：使用<a>标签添加链接到个人社交媒体或其他网站。
+使用CSS美化页面：
+颜色：使用color和background-color属性设置文本和背景颜色。
+字体：使用font-family、font-size等属性设置字体样式和大小。
+布局：使用margin、padding、display、flex等属性进行页面布局和元素对齐。
+基础知识点链接：
+HTML基础
+CSS基础
+通过这种项目驱动的学习方式，可以在实际操作中掌握HTML和CSS的基本知识，并逐步建立信心，为后续更复杂的前端开发打下基础。
+-->
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+        }
+
+        p {
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>我的个人简介</h1>
+        <p>Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
+        <img src="avatar.jpg" alt="个人照片">
+        <a href="http://xhslink.com/6TrxiM">我的小红书</a>
+    </div>
+</body>
+
+</html>

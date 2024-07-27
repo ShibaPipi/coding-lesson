@@ -1,0 +1,103 @@
+<!-- 项目8：天气预报应用**
+
+目标：制作一个显示实时天气信息的应用
+内容：
+使用HTML创建天气显示区域
+使用JavaScript调用天气API获取数据并显示
+使用CSS美化天气预报界面
+发布形式：短视频 + 图文教程
+基础知识点链接：
+HTML基础
+CSS基础
+JavaScript基础
+使用Fetch API
+OpenWeatherMap API
+通过项目8的学习，你将掌握如何使用JavaScript调用外部API获取数据，并在网页上动态显示这些数据。同时，通过CSS美化界面，使应用更具吸引力和用户友好。 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气预报应用</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #weather-app {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #weather-app h1 {
+            margin-bottom: 20px;
+            color: #00796b;
+        }
+
+        #weather p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        #refresh {
+            padding: 10px 20px;
+            background: #00796b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #refresh:hover {
+            background: #004d40;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="weather-app">
+        <h1>实时天气预报</h1>
+        <div id="weather">
+            <p>位置：<span id="location"></span></p>
+            <p>温度：<span id="temperature"></span>°C</p>
+            <p>天气：<span id="description"></span></p>
+        </div>
+        <button id="refresh">刷新</button>
+    </div>
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: '65324f51a4e9f1d58fda62119f4fdf91',
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=38febae27cc6a2dd6d834f820a7984d4"></script>
+    <script type="text/javascript">
+        try {
+            AMap.plugin('AMap.Weather', function () {
+                //创建天气查询实例
+                const weather = new AMap.Weather();
+                //执行实时天气信息查询
+                weather.getLive('天津市', function (err, data) {
+                    console.log(err, data);
+                    document.getElementById('location').innerText = data.city;
+                    document.getElementById('temperature').innerText = data.temperature;
+                    document.getElementById('description').innerText = data.weather;
+                });
+            });
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
+    </script>
+</body>
+
+</html>

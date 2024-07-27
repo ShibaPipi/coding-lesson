@@ -1,0 +1,137 @@
+<!-- 项目6：简易计算器
+目标：制作一个基本的计算器
+内容：
+使用HTML创建计算器界面：显示屏、数字按钮、运算符按钮
+使用JavaScript实现基本的加减乘除运算
+使用CSS美化计算器界面
+发布形式：短视频 + 图文教程
+基础知识点链接：
+JavaScript基础
+DOM操作
+事件处理
+CSS基础
+通过项目6的学习，你将掌握更多JavaScript和DOM操作技巧，能够实现基本的计算功能，并通过CSS美化页面，使其更加美观和用户友好。 -->
+<html>
+
+<head>
+    <style>
+        #calculator {
+            width: 240px;
+            margin: 50px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #display {
+            height: 40px;
+            margin-bottom: 10px;
+            background: #f4f4f4;
+            text-align: right;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+
+        .buttons {
+            display: grid;
+            /* 
+                创建 4 列，每列占据容器的 1/4 宽度。
+                1fr(fractional unit) 表示一个“比例单位”，表示每列占据可用空间的相同比例。
+                repeat(4, 1fr) 相当于 1fr 1fr 1fr 1fr，即每列的宽度相等，均分容器的宽度
+            */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #e0e0e0;
+        }
+
+        #clear {
+            /* 跨度：4 */
+            grid-column: span 4;
+            background: #ff4d4d;
+            color: white;
+        }
+
+        #clear:hover {
+            background: #ff1a1a;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calculator">
+        <div id="display">0</div>
+        <div class="buttons">
+            <button class="btn" data-value="7">7</button>
+            <button class="btn" data-value="8">8</button>
+            <button class="btn" data-value="9">9</button>
+            <button class="btn" data-value="/">/</button>
+            <button class="btn" data-value="4">4</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="6">6</button>
+            <button class="btn" data-value="*">*</button>
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="2">2</button>
+            <button class="btn" data-value="3">3</button>
+            <button class="btn" data-value="-">-</button>
+            <button class="btn" data-value="0">0</button>
+            <button class="btn" data-value=".">.</button>
+            <button class="btn" data-value="=">=</button>
+            <button class="btn" data-value="+">+</button>
+            <button id="clear" class="btn" data-value="C">C</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+        const buttons = document.querySelectorAll('.btn');
+        let currentInput = '';
+        let previousInput = '';
+        let operator = '';
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = button.getAttribute('data-value');
+                console.log(value)
+                if (value === 'C') {
+                    currentInput = '';
+                    previousInput = '';
+                    operator = '';
+                    display.innerText = '0';
+                } else if (value === '=') {
+                    if (currentInput && previousInput && operator) {
+                        display.innerText = eval(`${previousInput}${operator}${currentInput}`).toString();
+                        currentInput = '';
+                        previousInput = '';
+                        operator = '';
+                    }
+                } else if (['+', '-', '*', '/'].includes(value)) {
+                    if (currentInput) {
+                        previousInput = currentInput;
+                        currentInput = '';
+                        operator = value;
+                    }
+                } else {
+                    currentInput += value;
+                    display.innerText = currentInput;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

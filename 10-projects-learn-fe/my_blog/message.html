@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板 - 我的个人博客</title>
+    <meta name="description" content="这是我的留言板页面，欢迎留言。">
+    <meta name="keywords" content="留言, 互动">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>我的个人博客</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="log.html">日志</a></li>
+                <li><a href="photos.html">照片墙</a></li>
+                <li><a href="message.html">留言板</a></li>
+                <li><a href="about.html">关于我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="message">
+        <h2>留言板</h2>
+        <form onsubmit="event.preventDefault(); showMessage();">
+            <label for="messageContent">留言内容:</label>
+            <textarea id="messageContent" rows="4" cols="50"></textarea><br>
+            <button type="submit">提交</button>
+        </form>
+        <div id="submittedMessage"></div>
+    </section>
+</body>
+</html>

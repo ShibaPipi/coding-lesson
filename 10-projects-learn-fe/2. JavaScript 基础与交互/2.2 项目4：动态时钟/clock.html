@@ -1,0 +1,36 @@
+<!-- 项目4：动态时钟
+
+目标：制作一个实时显示当前时间的时钟
+内容：
+使用HTML创建时钟显示区域
+使用JavaScript获取当前时间并实时更新
+发布形式：短视频 + 图文教程
+JavaScript基础
+Date对象
+定时器函数
+DOM操作
+通过项目4的学习，你将进一步掌握JavaScript的时间处理和定时器函数的使用，能够实现实时动态更新的效果，为更复杂的交互功能打下坚实的基础。
+-->
+<html>
+
+<body>
+    <div id="clock"></div>
+    <script>
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            clockElement.innerText = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // 每秒更新一次时钟
+        setInterval(updateClock, 1000);
+
+        // 初始调用以立即显示时间
+        updateClock();
+    </script>
+</body>
+
+</html>

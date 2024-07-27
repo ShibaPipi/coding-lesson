@@ -1,0 +1,147 @@
+<!-- 项目7：个人博客主页
+目标：制作一个简单的个人博客主页
+内容：
+使用HTML创建博客主页结构：导航栏、文章列表、侧边栏
+使用CSS实现响应式布局
+使用JavaScript实现简单的交互效果，如展开/折叠文章内容
+发布形式：短视频 + 图文教程
+基础知识点链接：
+HTML基础
+CSS基础
+响应式设计
+JavaScript基础
+通过项目7的学习，你将掌握更多HTML、CSS和JavaScript的综合应用，能够构建一个完整的、具有基本交互功能的个人博客主页，并且通过CSS实现响应式布局，使其在不同设备上都能良好显示。 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客主页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        #articles {
+            flex: 3;
+            margin-right: 20px;
+        }
+
+        article {
+            background: #f9f9f9;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        aside {
+            flex: 1;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+
+            #articles {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="articles">
+            <article>
+                <h2>文章标题1</h2>
+                <p class="content">这是文章内容1...</p>
+                <button class="toggle">展开/折叠</button>
+            </article>
+            <article>
+                <h2>文章标题2</h2>
+                <p class="content">这是文章内容2...</p>
+                <button class="toggle">展开/折叠</button>
+            </article>
+        </section>
+        <aside>
+            <h3>侧边栏</h3>
+            <p>这里是侧边栏内容...</p>
+        </aside>
+    </main>
+    <footer>
+        <p>&copy; 2024 个人博客</p>
+    </footer>
+    <script>
+        document.querySelectorAll(".toggle").forEach((button) => {
+            button.addEventListener("click", () => {
+                const content = button.previousElementSibling
+                if (content.style.display === "none" || content.style.display === "") {
+                    content.style.display = "block"
+                    button.innerText = "折叠"
+                } else {
+                    content.style.display = "none"
+                    button.innerText = "展开"
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

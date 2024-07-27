@@ -1,0 +1,72 @@
+<!-- 目标：制作一个可以添加和删除任务的待办事项列表
+内容：
+使用HTML创建输入框和任务列表
+使用JavaScript实现任务的添加、删除功能
+使用CSS美化待办事项列表
+基础知识点链接：
+JavaScript基础
+DOM操作
+事件处理
+CSS基础
+通过项目5的学习，你将掌握更多JavaScript和DOM操作技巧，能够实现更复杂的交互功能，并且通过CSS美化页面，使其更加美观和用户友好。 -->
+<html>
+
+<body>
+
+    <head>
+        <style>
+            #taskList {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            #taskList li {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                margin: 5px 0;
+                background: #f0f0f0;
+                border-radius: 5px;
+            }
+
+            #taskList button {
+                background: #ff4d4d;
+                border: none;
+                color: white;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+
+            #taskList button:hover {
+                background: #ff1a1a;
+            }
+        </style>
+    </head>
+    <div>
+        <input type="text" id="taskInput" placeholder="添加新任务">
+        <button id="addTaskButton">添加任务</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+        document.getElementById('addTaskButton').addEventListener('click', function () {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                const taskList = document.getElementById('taskList');
+                const newTask = document.createElement('li');
+                newTask.innerText = taskText;
+                const deleteButton = document.createElement('button');
+                deleteButton.innerText = '删除';
+                deleteButton.addEventListener('click', function () {
+                    taskList.removeChild(newTask);
+                });
+                newTask.appendChild(deleteButton);
+                taskList.appendChild(newTask);
+                taskInput.value = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

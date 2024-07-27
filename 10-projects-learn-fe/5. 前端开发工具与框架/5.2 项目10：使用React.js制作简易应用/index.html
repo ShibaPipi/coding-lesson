@@ -1,0 +1,94 @@
+<!-- 项目10：使用React.js制作简易应用
+目标：使用React.js框架制作一个简易的单页应用
+下面我们将使用 CDN 的形式引入 React，避免使用 npm 和 Node.js，以降低学习门槛。我们将通过直接在 HTML 文件中引用 React 和 ReactDOM 的 CDN 链接来实现一个简单的单页应用。
+通过这种方式，无需使用 npm 和 Node.js，初学者可以轻松上手 React，体验其强大的功能和简洁的开发方式。
+介绍 React.js 基本概念
+什么是 React.js：React 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发和维护。
+React 的优点和用途：React 提供了组件化开发的方式，使得代码更易于维护和复用。
+React 的核心概念：
+组件：React 应用的基本构建块。每个组件可以包含状态和生命周期方法。
+状态（State）：组件内部的数据管理。
+属性（Props）：用于在组件之间传递数据。
+生命周期方法：在组件的不同阶段执行特定操作的方法。
+使用 React.js 实现数据绑定和基本交互
+创建 HTML 文件：包含基本的 HTML 结构和对 React 的引用。
+编写 CSS 文件：为应用添加样式。
+编写 JavaScript 文件：使用 React 创建组件，并实现计数器功能。
+通过项目10的学习，你将掌握如何使用React.js创建单页应用，理解React的基本概念和使用方法，能够使用React的组件、状态和属性实现数据绑定和基本交互。 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React 简易应用</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .App {
+            text-align: center;
+        }
+
+        .App-header {
+            background-color: #282c34;
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        function Counter({ count, onIncrement }) {
+            return (
+                <div>
+                    <p>当前计数：{count}</p>
+                    <button onClick={onIncrement}>增加计数</button>
+                </div>
+            );
+        }
+
+        function App() {
+            const [count, setCount] = useState(0);
+
+            const handleIncrement = () => {
+                setCount(count + 1);
+            };
+
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <h1>计数器应用</h1>
+                        <Counter count={count} onIncrement={handleIncrement} />
+                    </header>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
