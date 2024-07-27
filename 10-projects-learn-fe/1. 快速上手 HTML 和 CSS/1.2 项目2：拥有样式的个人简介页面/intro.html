@@ -18,40 +18,14 @@ CSS基础
 <html>
 
 <head>
-    <style>
-        body {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-        h1 {
-            font-family: 'Arial', sans-serif;
-            font-size: 24px;
-        }
-
-        p {
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-        }
-
-        img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-        }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="container">
-        <h1>我的个人简介</h1>
+        <h1 style="color: green; margin-bottom: 64px;">我的个人简介</h1>
+        <h1 id="red-title" class="title">我的个人简介</h1>
+        <h1 class="title">我的个人简介</h1>
+        <p>Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
         <p>Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
         <img src="avatar.jpg" alt="个人照片">
         <a href="http://xhslink.com/6TrxiM">我的小红书</a>

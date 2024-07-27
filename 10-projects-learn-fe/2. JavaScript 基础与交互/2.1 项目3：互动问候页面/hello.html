@@ -3,7 +3,6 @@
 内容：
 使用HTML创建按钮和显示区域
 使用JavaScript实现按钮点击事件，显示问候语
-发布形式：短视频 + 图文教程
 基础知识点链接：
 JavaScript基础
 DOM操作
@@ -12,14 +11,28 @@ DOM操作
  -->
 <html>
 
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-    <div>
-        <button id="greetButton">点击我</button>
-        <p id="greeting"></p>
+    <div class="container">
+        <h1>我的个人简介</h1>
+        <p>Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
+        <img src="avatar.jpg" alt="个人照片">
+        <a href="http://xhslink.com/6TrxiM">我的小红书</a>
+        <div>
+            <button id="greetButton">点击我</button>
+            <p id="greeting"></p>
+        </div>
     </div>
     <script>
         document.getElementById('greetButton').addEventListener('click', function () {
-            document.getElementById('greeting').innerText = '你好，欢迎来到我的网站！';
+            if (document.getElementById('greeting').innerText == '') {
+                document.getElementById('greeting').innerText = '你好，欢迎来到我的网站！';
+            } else {
+                document.getElementById('greeting').innerText = '';  
+            }
         });
     </script>
 </body>

@@ -1,0 +1,47 @@
+body {
+    background-color: #f0f0f0;
+    color: #333333;
+} 
+
+h1 {
+    font-size: 24px;
+}
+
+p {
+    font-family: 'Georgia';
+    font-size: 16px;
+}
+
+img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+a {
+    display: block;
+    margin-top: 16px;
+}
+
+.container {
+    text-align: center;
+    margin: 20px;
+}
+
+.title {
+    font-size: 48px;
+}
+
+#red-title {
+    color: red;
+}
+
+#greetButton {
+    margin-top: 16px;
+    background-color: blue;
+    color: #fff;
+    height: 40px;
+    border-radius: 6px;
+    padding: 0 8px;
+    cursor: pointer;
+}
