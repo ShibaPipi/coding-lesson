@@ -1,0 +1,14 @@
+# Add files here to ignore them from prettier formatting
+
+**/dist/*
+/coverage
+.local
+.output.js
+**/node_modules/**
+
+**/*.svg
+**/*.sh
+
+**/public/*
+
+/toFile.mjs
