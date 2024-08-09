@@ -17,14 +17,16 @@ DOM操作
 
 <body>
     <div class="container">
-        <h1>我的个人简介</h1>
-        <p>Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
+        <h1 class="text">我的个人简介</h1>
+        <p class="text">Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
         <img src="avatar.jpg" alt="个人照片">
         <a href="http://xhslink.com/6TrxiM">我的小红书</a>
         <div>
             <button id="greetButton">点击我</button>
             <p id="greeting"></p>
         </div>
+        <p class="text"></p>
+        <button>Click Me!</button>
     </div>
     <script>
         document.getElementById('greetButton').addEventListener('click', function () {
@@ -34,7 +36,71 @@ DOM操作
                 document.getElementById('greeting').innerText = '';  
             }
         });
+        document.getElementsByTagName('button')[1].addEventListener('click', function () {
+            document.getElementsByClassName('text')[2].innerHTML = 'U 已经 Click 了'
+        })
     </script>
 </body>
+
+<!-- <body>
+    <div class="container">
+        <h1 class="text">我的个人简介</h1>
+        <p class="text">Hi！我是 Cherry，一个对编程感兴趣的前端小白~</p>
+        <img id="avatar" src="avatar.jpg" alt="个人照片">
+        <a id="link" href="http://xhslink.com/6TrxiM">我的小红书</a>
+        <div>
+            <button id="greetButton">点击我</button>
+            <p id="greeting"></p>
+        </div>
+        <p class="text"></p>
+        <button>Click Me!</button>
+        <div id="only">This is a div</div>
+    </div>
+    <script>
+        document.getElementById('greetButton').addEventListener('click', function () {
+            if (document.getElementById('greeting').innerText == '') {
+                document.getElementById('greeting').innerText = '你好，欢迎来到我的网站！';
+            } else {
+                document.getElementById('greeting').innerText = '';  
+            }
+        });
+        document.getElementsByTagName('button')[1].addEventListener('click', function () {
+            document.getElementsByClassName('text')[2].innerHTML = 'U 已经 Click 了'
+        })
+        const newDiv = document.createElement('div');
+        newDiv.textContent = 'This is a new div'
+        document.getElementsByClassName('container')[0].appendChild(newDiv);
+        
+        document.getElementsByClassName('container')[0].insertBefore(
+            newDiv, document.getElementsByClassName('container')[0].firstElementChild
+        )
+    
+        document.getElementById('avatar').setAttribute('src', 'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/4ab4a336-5c15-420c-9fe9-fc4d86f2fc86/width=512/4ab4a336-5c15-420c-9fe9-fc4d86f2fc86.jpeg')
+    
+        document.getElementById('link').setAttribute('href', 'http://qq.com')
+    
+        document.getElementById('only').style.backgroundColor = '#333'
+        document.getElementById('only').style.color = '#fff'
+        document.getElementById('only').style.margin = '16px auto'
+        document.getElementById('only').style.padding = '16px'
+        document.getElementById('only').style.width = '160px'
+    
+        document.getElementById('only').addEventListener('mouseenter', function(e) {
+            document.getElementById('only').style.backgroundColor = '#fff'
+            document.getElementById('only').style.color = '#333'
+        })
+    
+        document.getElementById('only').addEventListener('mouseleave', function(e) {
+            document.getElementById('only').style.backgroundColor = '#333'
+            document.getElementById('only').style.color = '#fff'
+        })
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key = 'enter') {
+                alert('U pressed enter')
+            }
+        })
+    </script>
+</body> -->
 
 </html>
