@@ -11,7 +11,7 @@ CSS基础
 通过项目5的学习，你将掌握更多JavaScript和DOM操作技巧，能够实现更复杂的交互功能，并且通过CSS美化页面，使其更加美观和用户友好。 -->
 <html>
 
-<body>
+<!-- <body>
 
     <head>
         <style>
@@ -66,6 +66,160 @@ CSS基础
                 taskInput.value = '';
             }
         });
+    </script>
+</body> -->
+
+<body>
+
+    <head>
+        <style>
+            #tasks {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            #tasks li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #eee;
+                padding: 8px;
+                margin: 8px 0;
+            }
+
+            #tasks li .delete-button {
+                background-color: red;
+                color: white;
+                padding: 4px 8px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            #tasks li .delete-button:hover {
+                background-color: #ba9a9a;
+            }
+        </style>
+    </head>
+    <div style="padding: 16px 0">
+        <div>常用的 input type 类型</div>
+        <div>
+            <input type="password" placeholder="请输入密码">
+            <input type="number" placeholder="请输入一个合理的数字">
+            <input type="date">
+            <label for="checkbox">
+                记住密码
+            </label>
+            <input id="checkbox" type="checkbox">
+            <input type="radio" name="sex" value="male">男性
+            <input type="radio" name="sex" value="female">女性
+            <input type="radio" name="sex" value="unknown">未知
+            <input type="file">
+        </div>
+    </div>
+    <div>
+        <input id="input" type="text" placeholder="请输入">
+        <button id="button">添加任务</button>
+        <ul id="tasks"></ul>
+    </div>
+    <script>
+        document.getElementById("button").addEventListener("click", function () {
+            const inputElement = document.getElementById("input")
+            const inputValue = inputElement.value.trim()
+            if (inputValue !== "") {
+                const tasksElement = document.getElementById("tasks")
+                const liElement = document.createElement("li")
+                // liElement.innerText = inputValue
+                // const deleteButton = document.createElement("button")
+                // deleteButton.innerText = "删除"
+                // deleteButton.classList.add("delete-button")
+                // deleteButton.addEventListener("click", function () {
+                //     tasksElement.removeChild(liElement)
+                // })
+                liElement.innerHTML = inputValue + '<button class="delete-button">删除</button>'
+                // liElement.innerHTML = `
+                //     ${inputValue}
+                //     <button class="delete-button">删除</button>
+                // `
+                const deleteButton = liElement.querySelector(".delete-button")
+                deleteButton.addEventListener("click", function () {
+                    tasksElement.removeChild(liElement)
+                })
+                liElement.appendChild(deleteButton)
+                tasksElement.appendChild(liElement)
+                inputElement.value = ""
+            }
+        })
+        document.getElementById("input").addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                const inputElement = document.getElementById("input")
+                const inputValue = inputElement.value.trim()
+                if (inputValue !== "") {
+                    const tasksElement = document.getElementById("tasks")
+                    const liElement = document.createElement("li")
+                    liElement.innerText = inputValue
+                    const deleteButton = document.createElement("button")
+                    deleteButton.innerText = "删除"
+                    deleteButton.classList.add("delete-button")
+                    deleteButton.addEventListener("click", function () {
+                        tasksElement.removeChild(liElement)
+                    })
+                    liElement.appendChild(deleteButton)
+                    tasksElement.appendChild(liElement)
+                    inputElement.value = ""
+                }
+            }
+        })
+        // const age = 180
+        // if (age < 18) {
+        //     console.log("U R a minor.")
+        // } else if (age >= 18 && age < 60) {
+        //     console.log("U R an adult.")
+        // } else {
+        //     console.log("U R an old person.")
+        // }
+        let age = 20
+        let message = age >= 18 ? "U R an adult." : "U R a minor."
+        console.log(message)
+
+        for (let i = 0; i < 5; i++) {
+            console.log(i)
+        }
+
+        let fruits = ["apple", "orange", "banana"]
+        for (let i = 0; i < fruits.length; i++) {
+            console.log("I like " + fruits[i])
+        }
+
+        let count = 0
+        // while (count < 3) {
+        //     console.log(`Count is ${count}`)
+        //     if (Math.random() > 0.5) {
+        //         count++
+        //     }
+        // }
+
+        // let i = 0
+        // while (true) {
+        //     console.log(`Count is ${i}`)
+        //     i++
+        //     if (i > 5) {
+        //         break
+        //     }
+        // }
+
+        do {
+            console.log(`Count is ${count}`)
+            if (Math.random() > 0.5) {
+                count++
+            }
+            continue
+
+            // ...
+        } while (count < 3)
+
+
+        // ...
     </script>
 </body>
 
