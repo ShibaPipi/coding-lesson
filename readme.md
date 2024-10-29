@@ -8,4 +8,4 @@
 
 让我们一起开启崭新的编程学习之旅吧!
 
-![粉丝交流群]('https://gitee.com/shibapipi/coding-lesson/raw/master/wechat.jpg')
+![粉丝交流群](https://gitee.com/shibapipi/coding-lesson/raw/master/wechat.jpg)
