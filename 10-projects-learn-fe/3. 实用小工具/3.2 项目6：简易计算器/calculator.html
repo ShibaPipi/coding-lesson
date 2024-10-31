@@ -12,7 +12,7 @@ CSS基础
 通过项目6的学习，你将掌握更多JavaScript和DOM操作技巧，能够实现基本的计算功能，并通过CSS美化页面，使其更加美观和用户友好。 -->
 <html>
 
-<head>
+<!-- <head>
     <style>
         #calculator {
             width: 240px;
@@ -102,8 +102,8 @@ CSS基础
         let previousInput = '';
         let operator = '';
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
                 const value = button.getAttribute('data-value');
                 console.log(value)
                 if (value === 'C') {
@@ -131,6 +131,217 @@ CSS基础
             });
         });
     </script>
+</body> -->
+
+<head>
+    <title>Simple calculator</title>
+    <style>
+        #calculator {
+            width: 240px;
+            margin: 50px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #display {
+            height: 40px;
+            margin-bottom: 10px;
+            background: #f4f4f4;
+            text-align: right;
+            padding: 10px 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+
+        .buttons {
+            display: grid;
+            /* 
+                创建 4 列，每列占据容器的 1/4 宽度。
+                1fr(fractional unit) 表示一个“比例单位”，表示每列占据可用空间的相同比例。
+                repeat(4, 1fr) 相当于 1fr 1fr 1fr 1fr，即每列的宽度相等，均分容器的宽度
+            */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #e0e0e0;
+        }
+
+        #clear {
+            /* 跨度：4 */
+            grid-column: span 4;
+            background: #ff4d4d;
+            color: white;
+        }
+
+        #clear:hover {
+            background: #ff1a1a;
+        }
+
+        #panel {
+            position: relative;
+        }
+
+        #calculate {
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">My Calculator</h1>
+    <div id="calculator">
+        <div id="panel">
+            <div id="display">0</div>
+            <div id="calculate"></div>
+        </div>
+        <div class="buttons">
+            <!-- <button class="btn" data-value="7">7</button>
+            <button class="btn" data-value="8">8</button>
+            <button class="btn" data-value="9">9</button>
+            <button class="btn" data-value="/">/</button>
+            <button class="btn" data-value="4">4</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="6">6</button>
+            <button class="btn" data-value="*">*</button>
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="2">2</button>
+            <button class="btn" data-value="3">3</button>
+            <button class="btn" data-value="-">-</button>
+            <button class="btn" data-value="0">0</button>
+            <button class="btn" data-value=".">.</button>
+            <button class="btn" data-value="=">=</button>
+            <button class="btn" data-value="+">+</button>
+            <button id="clear" class="btn" data-value="C">C</button> -->
+        </div>
+    </div>
 </body>
+<script>
+    const buttonArray = [
+        '7', '8', '9', '/',
+        '4', '5', '6', '*',
+        '1', '2', '3', '-',
+        '0', '.', '=', '+',
+        'C'
+    ]
+
+    const buttonsContainer = document.querySelector('.buttons')
+
+    buttonArray.forEach(value => {
+        const button = document.createElement('button')
+        button.classList.add('btn')
+        button.setAttribute('data-value', value)
+        button.textContent = value
+
+        if (value === 'C') {
+            button.setAttribute('id', 'clear')
+        }
+
+        buttonsContainer.appendChild(button)
+    })
+
+    const display = document.getElementById("display")
+    const calculate = document.getElementById("calculate")
+    const buttons = document.querySelectorAll(".btn")
+    let firstNumber = ""
+    let secondNumber = ""
+    let operator = ""
+
+    buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const value = button.getAttribute("data-value")
+            if (value === "=") {
+                if (firstNumber && secondNumber && operator) {
+                    display.innerText = eval(`${firstNumber}${operator}${secondNumber}`)
+                    calculate.innerText = `${firstNumber} ${operator} ${secondNumber}`
+                    firstNumber = secondNumber = operator = ""
+                }
+            } else {
+                if (value === "C") {
+                    firstNumber = secondNumber = operator = ""
+                    display.innerText = "0"
+                } else if (["+", "-", "*", "/"].includes(value)) {
+                    if (secondNumber) {
+                        firstNumber = secondNumber
+                        secondNumber = ""
+                    }
+                    operator = value
+                } else {
+                    secondNumber += value
+                    display.innerText = secondNumber
+                }
+                calculate.innerText = `${firstNumber} ${operator} ${secondNumber}`
+            }
+        })
+    })
+</script>
+
+<script>
+    // + : 2 + 3 = 5
+    // - : 2 - 3 = -1
+    // * : 2 * 3 = 6
+    // / : 2 / 3 = 0.6666666666667
+    // % : 7 % 3 = 1
+    // ++ : 让一个数字加一
+    // -- : 让一个数字减一
+    let a = 1
+    let b = 2
+    a++
+    b--
+    console.log(a)
+    console.log(b)
+</script>
+    
+<script>
+    // =
+    // +=: a += 1 相当于 a = a + 1
+    // -=: a -+= 1 相当于 a = a - 1
+    // *=: a *+= 1 相当于 a = a * 1
+    // /=: a /+= 1 相当于 a = a / 1
+    // %/: a %+= 1 相当于 a = a % 1
+
+    let c = 1
+    c %= 10
+    console.log(c)
+</script>
+
+<script>
+    // 比较运算法会返回一个 boolean 值（true 或者 false）
+    // let a = 1
+    // let b = 2
+    // > : a > b(false)
+    // < : a < b(true)
+    // >= : a >= b(false)
+    // <= : a <= b(true)
+    // == : a == b(false)
+    // ===: a == b(false)
+    // !=
+    // !==
+    let d = 1
+    let e = '1'
+    console.log(d == e)
+    console.log(d === e)
+    let f = 100
+    let g = '100'
+    console.log(f != g)
+    console.log(f !== g)
+</script>
 
 </html>
